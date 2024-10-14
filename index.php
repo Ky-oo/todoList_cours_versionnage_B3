@@ -8,7 +8,14 @@ if (empty($_SESSION['tasks'])) {
 
 if (isset($_POST['task'])) {
   $_SESSION['tasks'][] = ["name" => $_POST['task'], "done" => false, "id" => $_SESSION['id']++];
-  var_dump($_SESSION['tasks']);
+}
+
+if (isset($_GET['id'])) {
+  foreach ($_SESSION['tasks'] as $key => $task) {
+    if ($task['id'] == $_GET['id']) {
+      unset($_SESSION['tasks'][$key]);
+    }
+  }
 }
 ?>
 
@@ -40,7 +47,9 @@ if (isset($_POST['task'])) {
         <?php foreach ($_SESSION['tasks'] as $task) { ?>
           <li class="list-group-item d-flex justify-content-between align-items-center">
             <?= $task['name'] ?>
-            <button class="btn btn-danger btn-sm ms-5">Delete</button>
+            <form method="get" action="">
+              <button class="btn btn-danger btn-sm ms-5" name="id" value="<?php echo $task["id"] ?>">Delete</button>
+            </form>
           </li>
         <?php }
         ; ?>
