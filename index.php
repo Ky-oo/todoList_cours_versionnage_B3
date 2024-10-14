@@ -1,5 +1,19 @@
+<?php
+session_start();
+
+if (empty($_SESSION['tasks'])) {
+  $_SESSION['tasks'] = [];
+  $_SESSION['id'] = 0;
+}
+
+if (isset($_POST['task'])) {
+  $_SESSION['tasks'][] = ["name" => $_POST['task'], "done" => false, "id" => $_SESSION['id']++];
+  var_dump($_SESSION['tasks']);
+}
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="UTF-8">
@@ -12,20 +26,24 @@
 <body>
   <h1 class="text-center">Todo List</h1>
   <div class="container align-content-center mt-5">
-    <card class="card shadow rounded d-flex align-items-center">
+    <card class="card shadow rounded d-flex align-items-center p-5">
+
       <h2 class="text-center">Add a task</h2>
-      <input type="text" class="mx-5">
-      <button class="btn btn-primary mt-3 mx-5 btn-sm">Add</button>
+
+      <form method="POST" action="" class="d-flex flex-column align-items-center">
+        <input type="text" name="task" class="mx-5">
+        <button class="btn btn-primary mt-3 btn-sm" type="submit">Add</button>
+      </form>
+
       <h2 class="text-center mt-3">Your task</h2>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          Task 1
-          <button class="btn btn-danger btn-sm ms-5">Delete</button>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          Task 2
-          <button class="btn btn-danger btn-sm ms-5">Delete</button>
-        </li>
+        <?php foreach ($_SESSION['tasks'] as $task) { ?>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <?= $task['name'] ?>
+            <button class="btn btn-danger btn-sm ms-5">Delete</button>
+          </li>
+        <?php }
+        ; ?>
     </card>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
