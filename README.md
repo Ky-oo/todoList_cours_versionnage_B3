@@ -1,5 +1,4 @@
-# todoList_cours_versionnage_B3
-## Kylian Patry / TodoList Git course B3
+# Kylian Patry / TodoList Git course B3
 ### Used:
 * PHP 
 * HTML
