@@ -54,7 +54,7 @@
   </div>
   <div>
     <hr>
-    <p class="text-centergti">MyDigitalSchool 2024</p>
+    <p class="text-centergti">MyDigitalSchool 2024 - Kylian Patry</p>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
