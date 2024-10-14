@@ -1,4 +1,3 @@
-<?php include __DIR__ . '/../Controller/taskController.php'; ?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -32,6 +31,9 @@
             <form method="get" action="">
               <button class="btn btn-danger btn-sm ms-2" name="idDelete"
                 value="<?php echo $task["id"] . $task["name"] ?>">X</button>
+            </form>
+            <form method="get" action="./Vue/editTask.php">
+              <button class="btn btn-warning btn-sm ms-2" name="idEdit" value="<?php echo $task["id"] ?>">Edit</button>
             </form>
           </li>
         <?php } ?>

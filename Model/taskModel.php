@@ -38,4 +38,13 @@ class TaskModel
   {
     return $_SESSION['tasks'];
   }
+
+  public static function editTask($taskId, $taskName)
+  {
+    foreach ($_SESSION['tasks'] as $key => $task) {
+      if ($task['id'] == $taskId) {
+        $_SESSION['tasks'][$key]['name'] = $taskName;
+      }
+    }
+  }
 }
