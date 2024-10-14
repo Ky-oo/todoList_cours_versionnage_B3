@@ -10,10 +10,18 @@ if (isset($_POST['task'])) {
   $_SESSION['tasks'][] = ["name" => $_POST['task'], "done" => false, "id" => $_SESSION['id']++];
 }
 
-if (isset($_GET['id'])) {
+if (isset($_GET['idDelete'])) {
   foreach ($_SESSION['tasks'] as $key => $task) {
-    if ($task['id'] == $_GET['id']) {
+    if ($task['id'] == $_GET['idDelete']) {
       unset($_SESSION['tasks'][$key]);
+    }
+  }
+}
+
+if (isset($_GET['idComplete'])) {
+  foreach ($_SESSION['tasks'] as $key => $task) {
+    if ($task['id'] == $_GET['idComplete']) {
+      $_SESSION['tasks'][$key]['done'] = !$_SESSION['tasks'][$key]['done'];
     }
   }
 }
@@ -48,10 +56,14 @@ if (isset($_GET['id'])) {
         <?php foreach ($_SESSION['tasks'] as $task) { ?>
 
           <li class="list-group-item d-flex justify-content-between align-items-center">
-            <?= $task['name'] ?>
-            <button class="btn btn-outline-primary btn-sm ms-5">Complete</button>
+            <?= $task['done'] ? '<s>' . $task['name'] . '</s>' : $task['name'] ?>
             <form method="get" action="">
-              <button class="btn btn-danger btn-sm ms-2" name="id" value="<?php echo $task["id"] ?>">X</button>
+              <button class="btn btn-outline-primary btn-sm ms-5" name="idComplete" value="<?php echo $task["id"] ?>">
+                Complete
+              </button>
+            </form>
+            <form method="get" action="">
+              <button class="btn btn-danger btn-sm ms-2" name="idDelete" value="<?php echo $task["id"] ?>">X</button>
             </form>
           </li>
 
