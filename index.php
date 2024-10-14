@@ -6,13 +6,13 @@ if (empty($_SESSION['tasks'])) {
   $_SESSION['id'] = 0;
 }
 
-if (isset($_POST['task'])) {
+if (isset($_POST['task']) && !empty($_POST['task'])) {
   $_SESSION['tasks'][] = ["name" => $_POST['task'], "done" => false, "id" => $_SESSION['id']++];
 }
 
 if (isset($_GET['idDelete'])) {
   foreach ($_SESSION['tasks'] as $key => $task) {
-    if ($task['id'] == $_GET['idDelete']) {
+    if ($task['id'] . $task['name'] == $_GET['idDelete']) {
       unset($_SESSION['tasks'][$key]);
     }
   }
@@ -47,7 +47,7 @@ if (isset($_GET['idComplete'])) {
 
       <form method="POST" action="" class="d-flex flex-column align-items-center">
         <input type="text" name="task" class="mx-5">
-        <button class="btn btn-primary mt-3 btn-sm" type="submit">Add</button>
+        <button class="btn btn-primary mt-3 btn-sm" type="submit" name="newTask">Add</button>
       </form>
 
       <h2 class="text-center mt-3">Your task</h2>
@@ -63,7 +63,8 @@ if (isset($_GET['idComplete'])) {
               </button>
             </form>
             <form method="get" action="">
-              <button class="btn btn-danger btn-sm ms-2" name="idDelete" value="<?php echo $task["id"] ?>">X</button>
+              <button class="btn btn-danger btn-sm ms-2" name="idDelete"
+                value="<?php echo $task["id"] . $task["name"] ?>">X</button>
             </form>
           </li>
 
