@@ -11,9 +11,9 @@ class TaskModel
     }
   }
 
-  public static function addTask($taskName)
+  public static function addTask($taskName, $date)
   {
-    $_SESSION['tasks'][] = ["name" => $taskName, "done" => false, "id" => $_SESSION['id']++];
+    $_SESSION['tasks'][] = ["name" => $taskName, "date" => $date, "done" => false, "id" => $_SESSION['id']++];
   }
 
   public static function deleteTask($taskId)
