@@ -5,22 +5,20 @@ TaskModel::initialize();
 if (isset($_POST['task']) && !empty($_POST['task'])) {
   TaskModel::addTask($_POST['task'], $_POST['date']);
 }
-
 if (isset($_POST['taskId']) && isset($_POST['taskName'])) {
   TaskModel::editTask($_POST['taskId'], $_POST['taskName']);
 }
-
 if (isset($_GET['idDelete'])) {
   TaskModel::deleteTask($_GET['idDelete']);
 }
-
 if (isset($_GET['idComplete'])) {
   TaskModel::completeTask($_GET['idComplete']);
 }
-
 if (isset($_GET['idEdit'])) {
   include __DIR__ . '/../Vue/editTask.php';
 }
 
-$tasks = TaskModel::getTasks();
+$filterDate = isset($_GET['filterDate']) ? $_GET['filterDate'] : null;
+$tasks = TaskModel::getTasks($filterDate);
+
 include __DIR__ . '/../Vue/task.php';

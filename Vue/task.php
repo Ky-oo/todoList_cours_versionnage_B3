@@ -47,6 +47,17 @@
     </div>
 
     <div class="card shadow rounded mt-5 p-4">
+      <h2 class="text-center mb-4">Filter Tasks by Date</h2>
+      <form method="GET" action="" class="d-flex flex-column align-items-center">
+        <div class="mb-3 w-100">
+          <label for="filterDate" class="form-label">Select Date</label>
+          <input type="date" name="filterDate" class="form-control">
+        </div>
+        <button class="btn btn-secondary w-100" type="submit">Filter</button>
+      </form>
+    </div>
+
+    <div class="card shadow rounded mt-5 p-4">
       <h2 class="text-center mb-4">Your Tasks</h2>
       <ul class="list-group list-group-flush">
         <?php foreach ($tasks as $task) { ?>

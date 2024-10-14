@@ -11,6 +11,8 @@ class TaskModel
     }
   }
 
+
+
   public static function addTask($taskName, $date)
   {
     $_SESSION['tasks'][] = ["name" => $taskName, "date" => $date, "done" => false, "id" => $_SESSION['id']++];
@@ -34,8 +36,14 @@ class TaskModel
     }
   }
 
-  public static function getTasks()
+  public static function getTasks($filterDate = null)
   {
+    $tasks = [];
+    if ($filterDate) {
+      $tasks = array_filter($tasks, function ($task) use ($filterDate) {
+        return $task['date'] === $filterDate;
+      });
+    }
     return $_SESSION['tasks'];
   }
 
