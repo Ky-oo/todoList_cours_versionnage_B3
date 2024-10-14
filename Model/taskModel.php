@@ -39,7 +39,14 @@ class TaskModel
     return $_SESSION['tasks'];
   }
 
-  public static function debugTask($taskId){
+  public static function editTask($taskId, $taskName)
+  {
+    foreach ($_SESSION['tasks'] as $key => $task) {
+      if ($task['id'] == $taskId) {
+        $_SESSION['tasks'][$key]['name'] = $taskName;
+        
+  public static function debugTask($taskId)
+  {
     foreach ($_SESSION['tasks'] aas $key => $task) {
       if ($task['id'] == $taskId) {
         var_dump($_SESSION['tasks'][$key]);
