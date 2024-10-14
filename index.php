@@ -43,16 +43,22 @@ if (isset($_GET['id'])) {
       </form>
 
       <h2 class="text-center mt-3">Your task</h2>
+
       <ul class="list-group list-group-flush">
         <?php foreach ($_SESSION['tasks'] as $task) { ?>
+
           <li class="list-group-item d-flex justify-content-between align-items-center">
             <?= $task['name'] ?>
+            <button class="btn btn-outline-primary btn-sm ms-5">Complete</button>
             <form method="get" action="">
-              <button class="btn btn-danger btn-sm ms-5" name="id" value="<?php echo $task["id"] ?>">Delete</button>
+              <button class="btn btn-danger btn-sm ms-2" name="id" value="<?php echo $task["id"] ?>">X</button>
             </form>
           </li>
+
         <?php }
         ; ?>
+      </ul>
+
     </card>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
