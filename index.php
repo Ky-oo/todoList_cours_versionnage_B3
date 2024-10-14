@@ -46,7 +46,7 @@ if (isset($_GET['idComplete'])) {
       <h2 class="text-center">Add a task</h2>
 
       <form method="POST" action="" class="d-flex flex-column align-items-center">
-        <input type="text" name="task" class="mx-5">
+        <input type="text" name="task" class="mx-5 rounded">
         <button class="btn btn-primary mt-3 btn-sm" type="submit" name="newTask">Add</button>
       </form>
 
