@@ -15,4 +15,8 @@ if (isset($_GET['idComplete'])) {
   TaskModel::completeTask($_GET['idComplete']);
 }
 
+if (isset($_GET['idDebug'])) {
+  TaskModel::debugTask($_GET['idDebug']);
+}
+
 $tasks = TaskModel::getTasks();

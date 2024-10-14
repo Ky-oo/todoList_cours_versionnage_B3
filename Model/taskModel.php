@@ -38,4 +38,12 @@ class TaskModel
   {
     return $_SESSION['tasks'];
   }
+
+  public static function debugTask($taskId){
+    foreach ($_SESSION['tasks'] aas $key => $task) {
+      if ($task['id'] == $taskId) {
+        var_dump($_SESSION['tasks'][$key]);
+      }
+    }
+  }
 }
