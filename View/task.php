@@ -40,7 +40,7 @@
               </form>
               <form method="get" action="" class="d-inline">
                 <button class="btn btn-outline-danger btn-sm ms-2" name="idDelete"
-                  value="<?php echo $task["id"] ?>">Delete</button>
+                  value="<?php echo $task["id"] . $task["name"] ?>">Delete</button>
               </form>
               <form method="get" action="" class="d-inline">
                 <button class="btn btn-outline-warning btn-sm ms-2" name="idEdit"

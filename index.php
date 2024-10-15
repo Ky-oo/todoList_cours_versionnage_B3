@@ -2,7 +2,7 @@
 <html lang="fr">
 
 <?php include 'View/header.php';
-include 'View/task.php';
+include 'Controller/taskController.php';
 include 'View/footer.php'; ?>
 
 </html>
