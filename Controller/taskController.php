@@ -1,4 +1,6 @@
 <?php
+use Model\TaskModel;
+
 require_once __DIR__ . '/../Model/taskModel.php';
 TaskModel::initialize();
 
@@ -19,7 +21,7 @@ if (isset($_GET['idComplete'])) {
 }
 
 if (isset($_GET['idEdit'])) {
-  include __DIR__ . '/../Vue/editTask.php';
+  include __DIR__ . '/../View/editTask.php';
 }
 
 if (isset($_GET['idDebug'])) {
@@ -29,4 +31,4 @@ if (isset($_GET['idDebug'])) {
 $filterDate = isset($_GET['filterDate']) ? $_GET['filterDate'] : null;
 $tasks = TaskModel::getTasks($filterDate);
 
-include __DIR__ . '/../Vue/task.php';
+include __DIR__ . '/../View/task.php';
