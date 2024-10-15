@@ -11,9 +11,11 @@ class TaskModel
     }
   }
 
-  public static function addTask($taskName)
+
+
+  public static function addTask($taskName, $date)
   {
-    $_SESSION['tasks'][] = ["name" => $taskName, "done" => false, "id" => $_SESSION['id']++];
+    $_SESSION['tasks'][] = ["name" => $taskName, "date" => $date, "done" => false, "id" => $_SESSION['id']++];
   }
 
   public static function deleteTask($taskId)
@@ -34,9 +36,20 @@ class TaskModel
     }
   }
 
-  public static function getTasks()
+  public static function getTasks($filterDate = null)
   {
-    return $_SESSION['tasks'];
+    $tasks = [];
+    if ($filterDate) {
+
+      foreach ($_SESSION['tasks'] as $task) {
+        if ($task['date'] === $filterDate) {
+          $tasks[] = $task;
+        }
+      }
+    } else {
+      $tasks = $_SESSION['tasks'];
+    }
+    return $tasks;
   }
 
   public static function editTask($taskId, $taskName)
