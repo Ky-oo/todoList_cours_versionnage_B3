@@ -63,7 +63,7 @@
 
         <?php foreach ($tasks as $task) { ?>
           <li class="list-group-item task-item">
-            <?= $task['done'] ? '<s>' . htmlspecialchars($task['name']) . " " . htmlspecialchars($task['date']) . '</s>' : htmlspecialchars($task['name']) . " " . $task['date'] ?>
+            <?= $task['done'] ? '<s>' . $task['name'] . " " . $task['date'] . '</s>' : $task['name'] . " " . $task['date'] ?>
             <div>
               <form method="get" action="" class="d-inline">
                 <button class="btn btn-outline-success btn-sm" name="idComplete"
