@@ -20,6 +20,7 @@ if (isset($_GET['idComplete'])) {
 
 if (isset($_GET['idEdit'])) {
   include __DIR__ . '/../Vue/editTask.php';
+  exit;
 }
 
 if (isset($_GET['idDebug'])) {

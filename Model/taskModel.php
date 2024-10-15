@@ -21,7 +21,7 @@ class TaskModel
   public static function deleteTask($taskId)
   {
     foreach ($_SESSION['tasks'] as $key => $task) {
-      if ($task['id'] . $task['name'] == $taskId) {
+      if ($task['id'] == $taskId) {
         unset($_SESSION['tasks'][$key]);
       }
     }
