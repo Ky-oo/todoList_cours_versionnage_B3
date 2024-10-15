@@ -40,11 +40,16 @@ class TaskModel
   {
     $tasks = [];
     if ($filterDate) {
-      $tasks = array_filter($tasks, function ($task) use ($filterDate) {
-        return $task['date'] === $filterDate;
-      });
+
+      foreach ($_SESSION['tasks'] as $task) {
+        if ($task['date'] === $filterDate) {
+          $tasks[] = $task;
+        }
+      }
+    } else {
+      $tasks = $_SESSION['tasks'];
     }
-    return $_SESSION['tasks'];
+    return $tasks;
   }
 
   public static function editTask($taskId, $taskName)
