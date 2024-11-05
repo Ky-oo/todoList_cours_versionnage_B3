@@ -28,29 +28,33 @@
 
     <div class="card shadow rounded mt-5 p-4">
       <h2 class="text-center mb-4">Your Tasks</h2>
-      <ul class="list-group list-group-flush">
+      <div class="row">
 
         <?php foreach ($tasks as $task) { ?>
-          <li class="list-group-item task-item">
-            <?= $task['done'] ? '<s>' . $task['name'] . " " . $task['date'] . '</s>' : $task['name'] . " " . $task['date'] ?>
-            <div>
-              <form method="get" action="" class="d-inline">
-                <button class="btn btn-outline-success btn-sm" name="idComplete"
-                  value="<?php echo $task["id"] ?>">Complete</button>
-              </form>
-              <form method="get" action="" class="d-inline">
-                <button class="btn btn-outline-danger btn-sm ms-2" name="idDelete"
-                  value="<?php echo $task["id"] . $task["name"] ?>">Delete</button>
-              </form>
-              <form method="get" action="" class="d-inline">
-                <button class="btn btn-outline-warning btn-sm ms-2" name="idEdit"
-                  value="<?php echo $task["id"] ?>">Edit</button>
-              </form>
+          <div class="col-md-4 mb-4">
+            <div class="card h-100">
+              <div class="card-body text-center">
+                <h5 class="card-title"><?= $task['done'] ? '<s>' . $task['title'] . '</s>' : $task['title'] ?></h5>
+                <p class="card-text"><?= $task['dueDate'] ?></p>
+                <div class="d-flex justify-content-center">
+                  <form method="get" action="" class="d-inline">
+                    <button class="btn btn-outline-success btn-sm" name="idComplete"
+                      value="<?php echo $task["id"] ?>">Complete</button>
+                  </form>
+                  <form method="get" action="" class="d-inline ms-2">
+                    <button class="btn btn-outline-danger btn-sm" name="idDelete"
+                      value="<?php echo $task["id"] . "-" . $task["title"] ?>">Delete</button>
+                  </form>
+                  <form method="get" action="" class="d-inline ms-2">
+                    <button class="btn btn-outline-warning btn-sm" name="idEdit"
+                      value="<?php echo $task["id"] ?>">Edit</button>
+                  </form>
+                </div>
+              </div>
             </div>
-          </li>
+          </div>
         <?php } ?>
 
-      </ul>
+      </div>
     </div>
-  </div>
 </body>

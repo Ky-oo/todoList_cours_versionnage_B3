@@ -1,5 +1,11 @@
 <?php
 use Model\TaskModel;
+use GuzzleHttp\Client;
+
+require 'vendor/autoload.php';
+
+$baseUrl = 'http://127.0.0.1:3000';
+$client = new Client();
 
 require_once __DIR__ . '/../Model/taskModel.php';
 TaskModel::initialize();
@@ -13,11 +19,11 @@ if (isset($_POST['taskId']) && isset($_POST['taskName'])) {
 }
 
 if (isset($_GET['idDelete'])) {
-  TaskModel::deleteTask($_GET['idDelete']);
+  TaskModel::deleteTask($client, $baseUrl, '/task/' . explode('-', $_GET['idDelete'])[0]);
 }
 
 if (isset($_GET['idComplete'])) {
-  TaskModel::completeTask($_GET['idComplete']);
+  TaskModel::completeTask($client, $baseUrl, '/task/complete/' . $_GET['idComplete']);
 }
 
 if (isset($_GET['idEdit'])) {
@@ -29,6 +35,6 @@ if (isset($_GET['idDebug'])) {
 }
 
 $filterDate = isset($_GET['filterDate']) ? $_GET['filterDate'] : null;
-$tasks = TaskModel::getTasks($filterDate);
+$tasks = TaskModel::getTasks($baseUrl, $client, '/task');
 
 include __DIR__ . '/../View/task.php';

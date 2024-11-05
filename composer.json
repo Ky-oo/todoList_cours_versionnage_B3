@@ -1,0 +1,12 @@
+{
+    "name": "kylia/todo-list_cours_versionnage_b3",
+    "require": {
+        "guzzlehttp/guzzle": "^7.9"
+    },
+    "authors": [
+        {
+            "name": "Kylian",
+            "email": "kylian.patry@gmail.com"
+        }
+    ]
+}
