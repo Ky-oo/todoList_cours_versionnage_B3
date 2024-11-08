@@ -7,6 +7,7 @@
 
 ### Needed: 
 * WAMP
+* this repo: https://github.com/Ky-oo/toDo-app (the API)
 
 ### Installation:
 * Copy the repo in the WWW folder
